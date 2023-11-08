@@ -1,6 +1,11 @@
+import React, {useState} from 'react'
 import React from "react";
 
 export default function Signup() {
+  const [usename,setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
   return (
     <div>
       <div className="flex flex-col text-center gap-6 p-12">
