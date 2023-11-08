@@ -9,7 +9,7 @@ function App() {
     <>
       <div>
         <Header />
-        <main className="px-20">
+        <main className="sm:px-20">
         <Outlet />
         </main>
         <Footer />

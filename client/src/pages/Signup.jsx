@@ -1,32 +1,67 @@
-import React, {useState} from 'react'
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
-  const [usename,setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({});
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true)
+    try {
+      const res = await fetch("/api/user/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      navigate('/signin')
+    } catch (error) {
+      next(error)
+    }
+    setLoading(false)
+  };
   return (
     <div>
-      <div className="flex flex-col text-center gap-6 p-12">
+      <div className="flex flex-col text-center gap-8 p-12 xl:p-12">
         <h1 className="text-4xl font-bold">Create Account</h1>
-        <form className="flex flex-col items-center gap-6 p-4">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-4 sm:w-[35%] sm:mx-auto"
+        >
           <input
             type="text"
+            id="username"
             placeholder="Username"
-            className="p-3 rounded-md w-[30%] bg-slate-200"
+            onChange={handleChange}
+            className="p-3 rounded-md bg-slate-200 shadow-md"
           />
           <input
             type="email"
+            id="email"
             placeholder="Email"
-            className="p-3 rounded-md w-[30%] bg-slate-200"
+            onChange={handleChange}
+            className="p-3 rounded-md  bg-slate-200 shadow-md"
           />
           <input
             type="password"
+            id="password"
             placeholder="Password"
-            className="p-3 rounded-md w-[30%] bg-slate-200"
+            onChange={handleChange}
+            className="p-3 rounded-md bg-slate-200 shadow-md"
           />
-          <button className="bg-[#3A3A3A] uppercase font-bold text-white p-2 rounded-md">create</button>
+          <button disabled={loading} className="bg-[#3A3A3A] uppercase font-bold text-white p-2 rounded-md self-center disabled:opacity-80">
+            {loading ? "loading..." : "create"}
+          </button>
         </form>
       </div>
     </div>
