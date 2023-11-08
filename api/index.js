@@ -9,6 +9,6 @@ mongoose.connect(process.env.MONGO)
 
 const app = express();
 
-app.listen(process.env.PORT,()=>{
+app.listen(3000,()=>{
     console.log(`Server is running at 3000`)
 });
