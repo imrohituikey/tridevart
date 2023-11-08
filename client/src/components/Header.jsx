@@ -3,12 +3,12 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const navLinks = [
-  {name : 'home', value : ''},
-  {name : 'category', value : ''},
-  {name : 'blog', value : 'blog'},
-  {name : 'about', value : 'about'},
-  {name : 'contact', value : 'contact'},
-];
+  { name: "home", value: "" },
+  { name: "category", value: "" },
+  { name: "blog", value: "blog" },
+  { name: "about", value: "about" },
+  { name: "contact", value: "contact" },
+]
 
 export default function Header() {
   return (
@@ -27,9 +27,19 @@ export default function Header() {
           />
         </form>
         <div className="hidden sm:flex gap-5">
-          {navLinks.map((item,index) => (
-            <Link to={`/${item.value}`} className="uppercase hover:underline" key={index}>{item.name}</Link>
+          {navLinks.map((item, index) => (
+            <Link
+              to={`/${item.value}`}
+              className="uppercase hover:underline"
+              key={index}
+            >
+              {item.name}
+            </Link>
           ))}
+          <div className="uppercase gap-4 flex">
+            <Link to="/signup" className="hover:underline">signup</Link>
+            <Link to="/signin" className="hover:underline">SignIn</Link>
+          </div>
         </div>
       </div>
     </header>

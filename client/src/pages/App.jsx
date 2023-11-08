@@ -9,7 +9,9 @@ function App() {
     <>
       <div>
         <Header />
+        <main className="px-20">
         <Outlet />
+        </main>
         <Footer />
       </div>
     </>

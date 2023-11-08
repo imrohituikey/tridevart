@@ -2,6 +2,10 @@ import React from 'react'
 
 export default function Footer() {
   return (
-    <div>Footer</div>
+    <div>
+      <div className='px-20'>
+      Footer
+      </div>
+    </div>
   )
 }
