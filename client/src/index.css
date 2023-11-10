@@ -8,6 +8,18 @@ body{
 li{
     list-style-type: none;
 }
-input{
-    width: auto;
+.contactinput{
+    height: 52px;
+    width: 100%;
+    border-radius: 5px;
+    padding-left: 12px;
+    border: 1px solid teal;
+}
+textarea{
+    width: 100%;
+    height: 150px;
+    padding: 12px 12px;
+    border-radius: 5px;
+    size-adjust: none;
+    border: 1px solid teal;
 }

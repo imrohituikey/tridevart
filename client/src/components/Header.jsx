@@ -45,7 +45,7 @@ export default function Header() {
             </Link>
           ))}
           
-          { currentUser ? <img src="defuser.png"className="w-9 h-9" alt="" /> : (
+          { currentUser ? <Link to='/profile'><img src="defuser.png" className="w-9 h-9" alt="image"/></Link>: (
             <div className="uppercase gap-4 flex">
             <Link to="/signup" onClick={handlereset} className="hover:underline">signup</Link>
             <Link to="/signin" onClick={handlereset} className="hover:underline">SignIn</Link>

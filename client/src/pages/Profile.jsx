@@ -10,12 +10,14 @@ export default function Profile() {
   const {currentUser} = useSelector(state=>state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handlesignOut =async()=>{
     const res = await fetch("/api/user/signout");
     const data = await res.json();
     navigate('/signin')
     dispatch(signOut());
   }
+  
   return (
     <div>
       <div className="flex flex-basis py-5 p-5 gap-4">
