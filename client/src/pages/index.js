@@ -6,3 +6,5 @@ export {default as Contact} from './Contact';
 export {default as About} from './About';
 export {default as Blog} from './Blog';
 export {default as Profile} from './Profile';
+export {default as Category} from './Category';
+export {default as ErrorPage} from './ErrorPage';

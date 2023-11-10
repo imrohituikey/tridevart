@@ -37,7 +37,7 @@ export default function Signin() {
         return;
       }
       dispatch(signInSuccess(data));
-        navigate("/profile");
+      navigate("/profile");
     } catch (error) {
       dispatch(signInFailure(error.message));
     }
@@ -56,14 +56,14 @@ export default function Signin() {
             id="email"
             placeholder="Email"
             onChange={handleChange}
-            className="p-3 rounded-md  bg-slate-200 shadow-md"
+            className="p-3 rounded-md  bg-white shadow-md"
           />
           <input
             type="password"
             id="password"
             placeholder="Password"
             onChange={handleChange}
-            className="p-3 rounded-md bg-slate-200 shadow-md"
+            className="p-3 rounded-md bg-white shadow-md"
           />
           <Link to="/">Forgot your password ?</Link>
           <button
@@ -74,7 +74,7 @@ export default function Signin() {
           </button>
           <Link to="/signup">Create account</Link>
         </form>
-        <OAuth/>
+        <OAuth />
       </div>
     </div>
   );

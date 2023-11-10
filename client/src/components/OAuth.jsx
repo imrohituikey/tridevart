@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 export default function OAuth() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleGoogleAuth = async () => {
     try {
       const provider = new GoogleAuthProvider();
@@ -25,9 +26,9 @@ export default function OAuth() {
           photo: result.user.photoURL,
         }),
       });
+      
       const data = await res.json();
       dispatch(signInSuccess(data));
-      console.log(data)
       navigate('/profile');
     } catch (error) {
       res.status(401).json(err);
@@ -37,7 +38,7 @@ export default function OAuth() {
   return (
     <button
       onClick={handleGoogleAuth}
-      className="bg-red-700 p-2 text-white rounded-lg font-semibold"
+      className="bg-red-700 p-2 text-white rounded-lg font-semibold w-[30%] self-center"
     >
       Continue with Google
     </button>

@@ -66,6 +66,7 @@ export default function Signup() {
             {loading ? "loading..." : "create"}
           </button>
         </form>
+        <OAuth/>
       </div>
     </div>
   );

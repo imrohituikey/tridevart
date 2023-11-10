@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Layout, Privateroute, ProfilePage } from "./components";
 import {
   Home,
   Signin,
@@ -11,37 +12,34 @@ import {
   About,
   Blog,
   Profile,
+  ErrorPage,
+  Category,
 } from "./pages";
-import { Privateroute } from "./components";
+
 import { Provider } from "react-redux";
 import { persistor, store } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      { path: "/", element: <Home /> },
-      {
-        path: "/profile",
-        element: <Privateroute>
-          <Profile/>
-        </Privateroute>,
-      },
-      { path: "/about", element: <About /> },
-      { path: "/blog", element: <Blog /> },
-      { path: "/contact", element: <Contact /> },
-      { path: "/signup", element: <Signup /> },
-      { path: "/signin", element: <Signin /> },
-    ],
-  },
-]);
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <RouterProvider router={router} />
+      <BrowserRouter>
+        <Routes>
+          <Route element={<App />}>
+            <Route element={<Home />} />
+            <Route path="/profile" element={<Privateroute />}>
+              <Route  element={<Profile/>}/>
+            </Route>
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/category" element={<Category />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </PersistGate>
   </Provider>
 );

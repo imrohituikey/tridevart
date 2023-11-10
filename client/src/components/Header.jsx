@@ -6,7 +6,7 @@ import { useSelector} from 'react-redux'
 
 const navLinks = [
   { name: "home", value: "" },
-  { name: "category", value: "" },
+  { name: "category", value: "category" },
   { name: "blog", value: "blog" },
   { name: "about", value: "about" },
   { name: "contact", value: "contact" },
@@ -14,7 +14,7 @@ const navLinks = [
 
 export default function Header() {
   const [navShow, setNavShow] = useState(true);
-  const currentUser = useSelector(state=>state.user)
+  const {currentUser} = useSelector(state=>state.user)
   const handlereset=()=>{
     setNavShow(false)
   }
@@ -53,7 +53,7 @@ export default function Header() {
           ) }
         </div>
 
-        <div className={`absolute ${navShow? "flex":"hidden"} flex p-4 w-full text-white flex-col left-0 items-center top-16 gap-5 bg-slate-700 sm:relative sm:hidden`}>
+        {/* <div className={`absolute ${navShow? "flex":"hidden"} flex p-4 w-full text-white flex-col left-0 items-center top-16 gap-5 bg-slate-700 sm:relative sm:hidden`}>
           {navLinks.map((item, index) => (
             <Link
               to={`/${item.value}`}
@@ -65,14 +65,14 @@ export default function Header() {
             </Link>
           ))}
 
-          { currentUser ? <img src="" alt="" /> : (
+          { currentUser !==null? <img src="" alt="" /> : 
             <div className="uppercase gap-4 flex">
             <Link to="/signup" onClick={handlereset} className="hover:underline">signup</Link>
             <Link to="/signin" onClick={handlereset} className="hover:underline">SignIn</Link>
           </div>
-          ) }
+           }
           
-        </div>
+        </div> */}
         <AiOutlineMenu onClick={()=>{navShow ? setNavShow(false): setNavShow(true)}} className="text-2xl sm:hidden"/>
       </div>
     </header>

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body{
-    background: rgb(241, 245, 241);
+    background: #E2E8F0;
 }
 li{
     list-style-type: none;
