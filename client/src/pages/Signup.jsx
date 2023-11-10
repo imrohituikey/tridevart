@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import OAuth from "../components/OAuth";
+
 
 export default function Signup() {
   const [formData, setFormData] = useState({});
@@ -12,6 +14,7 @@ export default function Signup() {
       [e.target.id]: e.target.value,
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true)

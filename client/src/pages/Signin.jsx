@@ -6,6 +6,7 @@ import {
   signInFailure,
   signInSuccess,
 } from "../redux/user/userSlice";
+import OAuth from "../components/OAuth";
 
 export default function Signin() {
   const navigate = useNavigate();
@@ -19,7 +20,6 @@ export default function Signin() {
       [e.target.id]: e.target.value,
     });
   };
-  {console.log(loading)}
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(signInStart());
@@ -34,9 +34,10 @@ export default function Signin() {
       const data = await res.json();
       if (data.success === false) {
         dispatch(signInFailure(data.message));
+        return;
       }
       dispatch(signInSuccess(data));
-      navigate("/");
+        navigate("/profile");
     } catch (error) {
       dispatch(signInFailure(error.message));
     }
@@ -69,11 +70,11 @@ export default function Signin() {
             disabled={loading}
             className="bg-[#3A3A3A] uppercase font-bold text-white p-2 rounded-md self-center disabled:opacity-80"
           >
-            {console.log(loading)}
             {loading ? "loading..." : "Login"}
           </button>
           <Link to="/signup">Create account</Link>
         </form>
+        <OAuth/>
       </div>
     </div>
   );

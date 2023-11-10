@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import {AiOutlineMenu} from 'react-icons/ai'
+import { useSelector} from 'react-redux'
 
 const navLinks = [
   { name: "home", value: "" },
@@ -13,6 +14,7 @@ const navLinks = [
 
 export default function Header() {
   const [navShow, setNavShow] = useState(true);
+  const currentUser = useSelector(state=>state.user)
   const handlereset=()=>{
     setNavShow(false)
   }
@@ -32,7 +34,7 @@ export default function Header() {
           />
         </form>
 
-        <div className="hidden sm:flex gap-6">
+        <div className="hidden sm:flex gap-12 items-center">
           {navLinks.map((item, index) => (
             <Link
               to={`/${item.value}`}
@@ -42,10 +44,13 @@ export default function Header() {
               {item.name}
             </Link>
           ))}
-          <div className="uppercase gap-4 flex">
-            <Link to="/signup" className="hover:underline">signup</Link>
-            <Link to="/signin" className="hover:underline">SignIn</Link>
+          
+          { currentUser ? <img src="defuser.png"className="w-9 h-9" alt="" /> : (
+            <div className="uppercase gap-4 flex">
+            <Link to="/signup" onClick={handlereset} className="hover:underline">signup</Link>
+            <Link to="/signin" onClick={handlereset} className="hover:underline">SignIn</Link>
           </div>
+          ) }
         </div>
 
         <div className={`absolute ${navShow? "flex":"hidden"} flex p-4 w-full text-white flex-col left-0 items-center top-16 gap-5 bg-slate-700 sm:relative sm:hidden`}>
@@ -59,10 +64,14 @@ export default function Header() {
               {item.name}
             </Link>
           ))}
-          <div className="uppercase gap-4 flex">
+
+          { currentUser ? <img src="" alt="" /> : (
+            <div className="uppercase gap-4 flex">
             <Link to="/signup" onClick={handlereset} className="hover:underline">signup</Link>
             <Link to="/signin" onClick={handlereset} className="hover:underline">SignIn</Link>
           </div>
+          ) }
+          
         </div>
         <AiOutlineMenu onClick={()=>{navShow ? setNavShow(false): setNavShow(true)}} className="text-2xl sm:hidden"/>
       </div>
