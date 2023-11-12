@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useState} from "react";
 import {Link} from 'react-router-dom'
 
 const contactdata = [
@@ -20,6 +20,29 @@ const contactdata = [
 ];
 
 const Contact = () => {
+  const [formData, setFormData] = useState({});
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+  const handleSubmit =async(e)=>{
+      e.preventDefault();
+      try {
+        const res = await fetch("/api/contact/contactmessage", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+        const data = await res.json();
+        console.log(data)
+      } catch (error) {
+        console.log(error)
+      }
+  }
   return (
     <div
       className="xl:p-6 text-center"
@@ -47,21 +70,23 @@ const Contact = () => {
           <h1 className="text-2xl xl:text-4xl font-semibold">
             <span className="text-accent">let&apos;s </span>Connect
           </h1>
-          <form className="z-10 flex flex-col gap-6 xl:w-[60%] p-3 xl:p-8 rounded-md">
+          <form onSubmit={handleSubmit} className="z-10 flex flex-col gap-6 xl:w-[60%] p-3 xl:p-8 rounded-md">
             <div className="flex gap-4 xl:gap-6">
-              <input type="text" placeholder="Your Name" className="contactinput" />
-              <input type="email" placeholder="Your Email" className="contactinput" />
+              <input id="name" type="text" placeholder="Your Name" className="contactinput" onChange={handleChange} />
+              <input id="email" type="email" placeholder="Your Email" className="contactinput" onChange={handleChange}/>
             </div>
-            <input type="text" placeholder="Subject" className="contactinput" />
+            <input id="subject" type="text" placeholder="Subject" className="contactinput"  onChange={handleChange} />
             <textarea
+              id="message"
               type="message"
               placeholder="Your message..."
               className="textarea"
+              onChange={handleChange}
             />
-          </form>
-          <button className="link px-4 py-1 xl:px-8 xl:py-2 bg-orange-400 text-black rounded-md">
+            <button className="link px-4 py-1 xl:px-8 xl:py-2 bg-orange-400 text-black rounded-md">
             Submit
           </button>
+          </form>
         </div>
       </div>
     </div>

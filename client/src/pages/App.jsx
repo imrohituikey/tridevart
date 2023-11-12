@@ -3,16 +3,13 @@ import { Header, Footer } from "../components";
 import { Outlet } from "react-router-dom";
 
 function App() {
-
   return (
     <>
-      <div>
         <Header />
-        <main className="sm:px-20">
+        <main className="flex flex-col sm:px-20 w-full h-full mx-auto m-6">
         <Outlet />
         </main>
         <Footer />
-      </div>
     </>
   );
 }

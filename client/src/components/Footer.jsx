@@ -39,7 +39,9 @@ const Footer = () => {
           <li><a href="/">Myntra Insider</a></li>
         </div>
       </div>
+      
     </div>
+
   )
 }
 

@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
 import userRouter from './routes/user.router.js'
+import contactRouter from './routes/contact.route.js';
+import productRouter from './routes/product.route.js';
 
 const app = express();
 
@@ -15,6 +17,8 @@ mongoose.connect(process.env.MONGO)
 //routes
 app.use(express.json());
 app.use('/api/user',userRouter);
+app.use('/api/contact',contactRouter);
+app.use('/api/product', productRouter);
 
 //app listening
 app.listen(process.env.PORT,()=>{

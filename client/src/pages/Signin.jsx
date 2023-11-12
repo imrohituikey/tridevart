@@ -56,14 +56,14 @@ export default function Signin() {
             id="email"
             placeholder="Email"
             onChange={handleChange}
-            className="p-3 rounded-md  bg-white shadow-md"
+            className="p-3 rounded-md"
           />
           <input
             type="password"
             id="password"
             placeholder="Password"
             onChange={handleChange}
-            className="p-3 rounded-md bg-white shadow-md"
+            className="p-3 rounded-md shadow-md"
           />
           <Link to="/">Forgot your password ?</Link>
           <button

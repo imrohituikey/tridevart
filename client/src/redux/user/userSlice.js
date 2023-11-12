@@ -26,7 +26,7 @@ const userSlice = createSlice({
             state.currentUser =null;
             state.error = null;
             state.loading = false;
-        }
+        },
     }
 });
 

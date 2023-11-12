@@ -46,21 +46,21 @@ export default function Signup() {
             id="username"
             placeholder="Username"
             onChange={handleChange}
-            className="p-3 rounded-md bg-slate-200 shadow-md"
+            className="p-3 rounded-md bg-white shadow-md"
           />
           <input
             type="email"
             id="email"
             placeholder="Email"
             onChange={handleChange}
-            className="p-3 rounded-md  bg-slate-200 shadow-md"
+            className="p-3 rounded-md  bg-white shadow-md"
           />
           <input
             type="password"
             id="password"
             placeholder="Password"
             onChange={handleChange}
-            className="p-3 rounded-md bg-slate-200 shadow-md"
+            className="p-3 rounded-md bg-white shadow-md"
           />
           <button disabled={loading} className="bg-[#3A3A3A] uppercase font-bold text-white p-2 rounded-md self-center disabled:opacity-80">
             {loading ? "loading..." : "create"}

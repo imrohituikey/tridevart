@@ -6,5 +6,5 @@ import { Profile } from '../pages';
 
 export default function Privateroute() {
   const {currentUser} = useSelector(state=>state.user);
-  return currentUser ? <Profile/> : <Navigate to="/signin"/>;
+  return currentUser ? <Outlet/> : <Navigate to="/signin"/>;
 }

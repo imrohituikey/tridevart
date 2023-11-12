@@ -42,36 +42,30 @@ export default function Profile() {
           </div>
           <div className="flex flex-col bg-[#FFFFFF] rounded-md p-6 gap-6">
             <div className="flex justify-between border-b-2">
-              <div className="flex gap-2 items-center">
-                <AiFillWeiboCircle className="text-3xl"/>
-                Website
-              </div>
-              <span>demo.com</span>
+            <Link to='/profile'  className="bg-[#007BFF] text-white outline-[#007BFF] px-6 py-2 font-semibold rounded-md text-center w-full">
+                Profile
+              </Link>
             </div>
             <div className="flex justify-between border-b-2">
-              <div className="flex gap-2 items-center">
-                <AiFillWeiboCircle className="text-3xl"/>
-                Website
-              </div>
-              <span>demo.com</span>
+            <Link to='/productshow' className="bg-[#007BFF] text-white outline-[#007BFF] px-6 py-2 font-semibold rounded-md text-center w-full">
+               All Posts
+              </Link>
             </div>
             <div className="flex justify-between border-b-2">
-              <div className="flex gap-2 items-center">
-                <AiFillWeiboCircle className="text-3xl"/>
-                Linked.in
-              </div>
-              <span>demo.com</span>
+            <Link to='/productadd' className="bg-[#007BFF] text-white outline-[#007BFF] px-6 py-2 font-semibold rounded-md text-center w-full">
+                Add Product
+              </Link>
             </div>
             <div className="flex justify-between border-b-2">
-              <div className="flex gap-2 items-center">
-                <AiFillGithub className="text-3xl"/>
-                Github
-              </div>
-              <span>demo.com</span>
+            <Link to='/settings' className="bg-[#007BFF] text-white outline-[#007BFF] px-6 py-2 font-semibold rounded-md text-center w-full">
+                Settings
+              </Link>
             </div>
           </div>
         </div>
-          <ProfilePage />
+          <div className="flex w-full bg-white rounded-md p-4">
+          <Outlet/>
+          </div>
       </div>
     </div>
   );
